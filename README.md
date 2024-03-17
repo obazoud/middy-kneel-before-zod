@@ -52,7 +52,7 @@ const personSchema = z.object({
 });
 
 const responseSchema = z.object({
-    message: string,
+    message: z.string(),
 });
 
 handler
@@ -71,7 +71,7 @@ handler
     )
     .use(
         middyZodValidator({
-            inputBodySchema: person,
+            inputBodySchema: personSchema,
             outputBodySchema: responseSchema,
         }),
     );
